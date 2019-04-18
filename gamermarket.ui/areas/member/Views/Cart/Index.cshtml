@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+}
+
+<div class="col-md-offset-2 col-md-8 order-details">
+    <div class="section-title text-center">
+        <h3 class="title">Your Order</h3>
+    </div>
+    <div class="order-summary">
+        <div class="order-col">
+            <div><strong>PRODUCT</strong></div>
+            <div><strong>@*<a onclick="$.Cart.Increase()"><i class="fa fa-remove"></i></a>*@ <i class=""></i>  </strong></div>
+            <div><strong>TOTAL</strong></div>
+        </div>
+        <div id="list-products" class="order-products">
+            @*<div class="order-col"><div>1x Product Name Goes Here</div><div>$980.00</div>
+                </div>
+                <div class="order-col">
+                    <div>2x Product Name Goes Here</div>
+                    <div>$980.00</div>
+                </div>*@
+        </div>
+        <div class="order-col">
+            <div></div>
+            <div><strong>@TempData["Message"]</strong></div>
+        </div>
+        <div class="order-col">
+            <div><strong>TOTAL</strong></div>
+            <div><strong class="order-total"><span id="total"></span></strong></div>
+        </div>
+    </div>
+    <div class="payment-method">
+        <div class="input-radio">
+            <input type="radio" name="payment" id="payment-1">
+            <label for="payment-1">
+                <span></span>
+                Direct Bank Transfer
+            </label>
+            <div class="caption">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+        <div class="input-radio">
+            <input type="radio" name="payment" id="payment-2">
+            <label for="payment-2">
+                <span></span>
+                Cheque Payment
+            </label>
+            <div class="caption">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+        <div class="input-radio">
+            <input type="radio" name="payment" id="payment-3">
+            <label for="payment-3">
+                <span></span>
+                Paypal System
+            </label>
+            <div class="caption">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </div>
+    <div class="input-checkbox">
+        <input type="checkbox" id="terms">
+        <label for="terms">
+            <span></span>
+            I've read and accept the <a href="#"></a>
+        </label>
+    </div>
+    <a href="@Url.Action("Add","Order",new { area="Member"})" class="primary-btn order-submit">Place order</a>
+</div>
+
+@section BOTTOM_JS_SECTION {
+    <script>
+
+
+
+    $(document).ready(function () {
+
+        setTimeout(function () {
+            $.Cart.List()
+        }, 500);
+       
+        $.Cart = {
+            List: function () {
+                LoadProductCount();
+                $.getJSON("@Url.Action("List","Cart")", function (data) {
+
+                    $("#list-products div").remove();
+
+                    var count = Object.keys(data).length;
+
+                    var totalAmount = 0;
+
+                    if (count > 0) {
+                        $.each(data, function (key, item) {
+                            $("#list-products").append(`<div class='order-col'><div>${item.Quantity}x ${item.ProductName}</div><div><a onclick='$.Cart.Increase(" ${item.ID} ")'><i class='fa fa-plus'></i></a></div><div><a onclick='$.Cart.Decrease(" ${item.ID} ")'><i class='fa fa-minus'></i></a>&nbsp;&nbsp;<a onclick='$.Cart.Remove(" ${item.ID} ")'><i class='fa fa-remove'></i></a></div><div>$${item.Quantity * item.UnitPrice}</div>`);
+                            totalAmount += (item.Quantity * item.UnitPrice);
+                        })
+                    }
+                    $("#total").html(totalAmount);
+                })
+            },
+            Increase: function (Id) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "Json",
+                    url: "@Url.Action("IncreaseCart","Cart")/"+Id,
+                    success: function (data) {
+                        $.Cart.List();
+                    }
+                })
+            },
+            Decrease: function (Id) {
+                  $.ajax({
+                    type: "POST",
+                    dataType: "Json",
+                    url: "@Url.Action("DecreaseCart", "Cart")/"+Id,
+                    success: function (data) {
+                        $.Cart.List();
+                    }
+                })
+            },
+            Remove: function (Id) {
+                  $.ajax({
+                    type: "POST",
+                    dataType: "Json",
+                    url: "@Url.Action("Remove", "Cart")/"+Id,
+                    success: function (data) {
+                        $.Cart.List();
+                    }
+                })
+            }
+        }
+
+    });
+    </script>
+}

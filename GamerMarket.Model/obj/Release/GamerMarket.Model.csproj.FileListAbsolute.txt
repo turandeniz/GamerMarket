@@ -1,0 +1,15 @@
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\GamerMarket.Model.dll.config
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\GamerMarket.Model.dll
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\GamerMarket.Model.pdb
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\EntityFramework.dll
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\GamerMarket.Core.dll
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\GamerMarket.Core.pdb
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\GamerMarket.Core.dll.config
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\EntityFramework.xml
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\obj\Release\GamerMarket.Model.csprojAssemblyReference.cache
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\obj\Release\GamerMarket.Model.csproj.CoreCompileInputs.cache
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\obj\Release\GamerMarket.Model.csproj.CopyComplete
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\obj\Release\GamerMarket.Model.dll
+C:\Users\cn_og\Dropbox\YMS5151\GamerMarket\GamerMarket.Model\obj\Release\GamerMarket.Model.pdb
